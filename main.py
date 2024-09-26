@@ -23,3 +23,12 @@ print(df.describe().T)
 # Checking for empty datas
 print(df.isna().sum())
 print(df.isnull().sum())
+
+# Convert date to datetime objects
+print(df.columns)
+df['date'] = pd.to_datetime(df['date'], errors='coerce')
+
+# Converts all int values to numeric type
+numeric_columns = ['gf', 'ga', 'xg', 'xga', 'poss', 'sh', 'sot', 'dist', 'fk', 'pk', 'pkatt']
+for col in numeric_columns:
+    df[col] = pd.to_numeric(df[col], errors='coerce')
